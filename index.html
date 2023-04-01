@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="impstyle.css">
+    <title>Document</title>
+</head>
+<style>
+.container{
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 0 15px;
+
+}
+
+.menu-btn{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    background-color:transparent;
+    border:none;
+    cursor: pointer;
+    position: relative;
+    margin-right: 20px;
+    z-index: 50;
+   
+}
+
+.btn-line{
+    margin-top: 20px;
+position: absolute;
+left: 0;
+width: 100%;
+margin-top: 20px;
+height: 5px;
+transition: .3s ease;
+background-color:  #fff;
+}
+#search-inp{
+    outline: none;
+    padding: 10px;
+    border-radius: 30px;
+    height: 10px;
+background-color: white;
+border:solid purple 3px ;
+}
+.btn-line:nth-child(1){
+    top: 0;
+}
+.btn-line:nth-child(2){
+top: 10px;
+}
+.btn-line:nth-child(3){
+top: 20px;
+}
+.btn-line:nth-child(4){
+top: 20px;
+}
+.menu-open .btn-line:nth-child(1){
+transform: scaleX(0);
+}
+.menu-open .btn-line:nth-child(2){
+    transform: rotate(45deg);
+}
+.menu-open .btn-line:nth-child(3){
+    transform: rotate(-45deg);
+}
+.menu-open .btn-line:nth-child(4){
+    transform: scaleX(0);
+}
+.nav{
+    display: flex;
+    align-items: center;
+}
+.header{
+    background-image: linear-gradient(to right, #650370 0%, #ee00ff 50%, #650370 100%);
+
+}
+.photos{
+    width: 100px;
+    height: 100px;
+margin-right: 15px;
+    background-color: #403e3e;
+}
+.name-surname{
+    display: flex;
+    align-items: center;
+}
+.btn-change{
+  position: absolute;
+  right: 15px;
+  font-size: 15px;
+padding: 5px 15px;
+
+background-image: linear-gradient(to right, #650370 0%, #ee00ff 50%, #650370 100%);
+    border-radius: 30px;
+    color:#fff;
+}
+.main-btn{
+    display: flex;
+    justify-content: center;
+}
+.btn-safe{
+  
+    padding: 5px 10px;
+    background-image: linear-gradient(to right, #650370 0%, #ee00ff 50%, #650370 100%);
+    border-radius: 30px;
+    color:#fff;
+}
+.status-change{
+    display: flex;
+  padding-top: 50px;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+.citys,.professions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.etc-change{
+    margin-bottom: 25px;
+   
+}
+.status-inp,.city-inp,.profession-inp{
+    color: black;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid rgb(184, 184, 184);
+    margin-left: 10px;
+    height: 40px;
+    font-size: 15px;
+   
+}
+*{
+    margin: 0;
+padding: 0;
+}
+body{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #e604ff 0%, #c503d3 50%, #a104b2 100%);
+font-family: inherit;
+
+}
+.main-profile{
+    max-width: 100%;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 30px ;
+    margin-top: 20px;
+    display: flex;
+   justify-content: center;
+   align-items: center;
+  
+}
+.photo{
+    width: 20%;
+    height: 40%;
+    background-color: #605959cb;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    
+}
+.fio-title{
+    display: flex;
+}
+.info-text{
+    display: block;
+}
+.status-info{
+    display: flex;
+    padding: 20px 0 40px 0;
+    align-items: center;
+
+}
+.status-info>p,.info-man{
+    font-size: 10px;
+}
+.status{
+    padding-right: 50px;
+}
+.btn-red{
+    padding: 5px 10px;
+    background-image: linear-gradient(to right, #650370 0%, #ee00ff 50%, #650370 100%);
+border-radius: 30px;
+font-size: 15px;
+text-transform: lowercase;
+color: #fff ;
+}
+
+.friends{
+    margin-top: 25px;
+  width: 20%;
+     height: 500px;
+    background-color: #fff;
+    border-radius: 30px;
+   
+}
+
+.lenta{
+    margin-top: 25px;
+    width: 80%;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 30px;
+    margin-left: 20px;
+}
+.as{
+    display: flex;
+}
+.menu{
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #650370 0%, #ee00ff 50%, #650370 100%);
+transform: translateY(-200%);
+padding-top: 30px;
+}
+li{
+    text-align: center;
+ padding-top: 70px;
+ font-size: 24px;
+ text-transform: uppercase;
+ font-family: Arial, Helvetica, sans-serif;
+ color:#fff;
+ font-weight: bold;
+
+}
+
+.menu-open .menu{
+    transform: translateY(0%);
+   
+}
+.popup,.change{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+   background-color: rgba(0, 0, 0, 0.583);
+  top:0;
+  left:0;
+  opacity: 0;
+  visibility: hidden;
+  text-align: center;
+  }
+
+  .popup__body,.change__body{
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:30px 10px 30px 10px;
+  }
+  .popup__text,.change__text{
+    font-size: 18px;
+    margin-left:30px;
+  }
+  .popup__content,.change__content{
+    position: relative;
+    background-color: white;
+    color:black;    
+    font-weight: lighter;
+    width: 500px;
+    padding: 20px 90px 40px 20px;
+    border-radius: 20px;
+margin-bottom: 25px;
+}
+  .popup__title ,.change__title{
+    font-size: 30px;
+  margin-bottom: 1em;  
+ text-align: center;
+  }
+  .popup__close,.change__close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px;
+    color:black;
+    text-decoration: none;
+  }
+  .popup:target,.change:target{
+    z-index: 3;
+    opacity: 2;
+  transition: 1.5s;
+  visibility: visible;
+  }
+  .fio2{
+ 
+    margin-bottom: 20px;
+}
+.bornToBe{
+    margin-bottom: 20px;
+}
+.projects{
+    margin-bottom: 20px;
+}
+.otec{
+    position: absolute;
+    left:0;
+}
+hr{
+    margin-bottom:30px;
+}
+@media(max-width:1024px) {
+li{
+    padding-top: 37px;
+}
+}
+@media(max-width:680px) {
+    .photo{
+        width: 40%;
+        margin-left: 15px;
+    }
+    .as{
+        display: block;
+    }
+    .friends{
+        height: 150px;
+        width: 100%;
+        margin-top: 20px;
+     
+    }
+   
+    .lenta{
+width: 100%;
+   margin-left: 0;
+   margin-right: 0;
+        margin-top: 20px;
+    }
+    #search-inp{
+    position:unset;
+    }
+    .change__content{
+        width: 80%;
+        margin: 0 15px;
+    }
+    .popup__title{
+        font-size: 4vw;
+    
+      white-space: nowrap;
+    }
+}
+@media(max-width:529px) {
+    .change__content{
+        width: 60%;
+        margin: 0 15px;
+    }
+    .name,.surname{
+        font-size: 3vw;
+    }
+    .btn-change{
+        padding: 5px 2vw;
+        font-size: 3vw;
+    
+    }
+    .photos{
+        margin-left: -30px;
+    }
+    .name,.surname{
+        padding-right: 20px;
+    }
+}
+@media(max-width:510px) {
+
+.info-man{
+    font-size: 8px;
+}
+.btn-red{
+  width: 70%;
+  display: inline-block;
+  text-align: center;
+  
+    font-size: 12px;
+
+}
+li{
+    padding-top: 50px;
+}
+.photo{
+    height: 140px;
+    margin-right: 8px;
+}
+.status{
+    padding-right: 10px;
+}
+.popup__content{
+    width: 60%;;
+}
+.status-name,.city-change{
+    padding-left: 45px;
+}
+.profession-change{
+    padding-left: 30px;
+}
+.status-inp,.profession-inp{
+    width: 45vw;
+}
+}
+@media(max-width:400px) {
+li{
+    padding-top: 50px;
+}
+.status-change,.city-change,.profession-change{
+    font-size: 4vw;
+  align-items: center;
+}
+.status-name,.city-change{
+    padding-left: 45px;
+}
+.profession-change{
+    padding-left: 30px;
+}
+.status-inp,.profession-inp{
+    width: 45vw;
+}
+.btn-safe{
+    font-size: 5vw;
+}
+}
+@media(max-width:350px) {
+
+.btn-line{
+
+    width: 120%;
+}
+.name1,.surname1{
+ font-size: 4vw;   
+}
+}
+
+
+
+</style>
+<body>
+    <header class="header">
+   
+        <div class="container">
+                <nav class="nav">
+                    <button class="menu-btn" type="button">
+                        <span class="btn-line"></span>
+                        <span class="btn-line"></span>
+                        <span class="btn-line"></span>
+                        <span class="btn-line"></span>
+                    </button>
+                    <ul class="menu">
+                        
+                        <li> <a href="">топ проекты</a></li>
+                        <li><a href="">создать проект</a></li>
+                        <li><a href="">мои проекты</a></li>
+                        <li><a href="">друзья</a></li>
+                        <li><a href="">подписчики</a></li>
+                        <li><a href="">команды</a></li>
+                        <li><a href="">донаты</a></li>
+                    </ul>
+                    <input id="search-inp" type="text" placeholder="🔍Найти">
+                </nav>
+        </div>
+      
+    </header>
+
+    <main class="main">
+        <section class="section-1">
+            <div class="container">
+            <div class="main-profile">
+                <div class="photo">
+
+                </div>
+                <div class="info-text">
+                <div class="fio-title">
+                    <p class="name1">Миасник&nbsp</p>
+                    <p class="surname1">Поздняков</p>
+            </div>
+            <div class="status-info">
+                <p class="status">статуc</p>
+              <a href="#popup" class="info-man">i подробнее</a>
+            </div>
+            <div id = "popup" class="popup">
+                <div class="popup__body">
+                <div class="popup__content">
+                  <a href="#" class = "popup__close">X</a>
+                  <div class="popup__title">подробная информация</div>
+                  <div class="popup__text">
+        <div class="fio2">
+        <hr class="otec" width="99.8% " color="#ee00ff" >
+        <br>
+        Поздняков<br>
+        Миасник
+        </div>
+        <div class="bornToBe">
+            <hr color="#ee00ff">
+        Москва<br>
+        фронтенд-разработчик
+        </div>
+        <div class="projects">
+            <hr color="#ee00ff">
+        Мои проекты
+        
+        </div>
+        
+        
+                  </div>
+                </div>
+                
+                </div>
+                
+                
+                </div>
+                 <div id = "popup" class="popup">
+                <div class="popup__body">
+                <div class="popup__content">
+                  <a href="#" class = "popup__close">X</a>
+                  <div class="popup__title">подробная информация</div>
+                  <div class="popup__text">
+        <div class="fio2">
+        <hr class="otec" width="99.8% " color="#ee00ff" >
+        <br>
+        Поздняков<br>
+        Миасник
+        </div>
+        <div class="bornToBe">
+            <hr color="#ee00ff">
+        Москва<br>
+        фронтенд-разработчик
+        </div>
+        <div class="projects">
+            <hr color="#ee00ff">
+        Мои проекты
+        
+        </div>
+        
+        
+                  </div>
+                </div>
+                
+                </div>
+                
+                
+                </div>
+
+                <div id = "change" class="change">
+                    <div class="change__body">
+                    <div class="change__content">
+                      <a href="#" class = "change__close">X</a>
+                      <a href="#change"class="popup__title">Редактирование профиля</a>
+                      <div class="change__text">
+          
+            <hr class="otec" width="99.8% " color="#ee00ff">
+            <br>
+            <div class="name-surname">
+           <div class="photos"></div>
+           <div class="main-fio">
+           <p class="name">Миасник</p>
+           <p class="surname">Поздняков</p>
+           </div>
+           <a  class="btn-change"href="">изменить</a>
+            </div>
+            <div class="status-change">
+                <p class="status-name">Статус:</p>
+
+                <input class="status-inp"type="text">
+            </div>
+                <hr color="#ee00ff">
+          <div class="etc-change">
+            <div class="citys">
+                <p class="city-change">город:</p>
+                <input class="city-inp"type="text">
+            </div>
+
+            <div class="professions">
+                <p class="profession-change">должность:</p>
+                <input class="profession-inp"type="text">
+            </div>
+            </div>
+            
+                <hr color="#ee00ff">
+                <div class="main-btn">
+            <a href="#" class="btn-safe">сохранить</a>
+        </div>
+          
+            
+            
+                      </div>
+                    </div>
+                    
+                    </div>
+                    
+                    
+                    </div>
+
+            <a href="#change" class="btn-red">редактировать профиль</a>
+                </div> 
+                </div>
+            </div>
+        </section>
+        <section class="section-2">
+            <div class="container">
+               <div class="as">
+               
+            <div class="friends"></div>
+            <div class="lenta"></div>
+               </div>
+    </div>
+        </section>
+    </main>
+    <script>
+        const btn=document.querySelector(".menu-btn")
+        const nav=document.querySelector(".nav")
+        const popup=document.querySelector(".body")
+        btn.addEventListener('click',()=>{
+            nav.classList.toggle("menu-open")
+        })
+       
+    </script>
+</body>
+</html>
